@@ -5,10 +5,11 @@ import { CactLogo } from "./Logo";
 
 const NAV = [
   { label: "Le concept", href: "#concept" },
-  { label: "Les coachs", href: "#coachs" },
+  { label: "HYROX", href: "#hyrox" },
+  { label: "Communauté", href: "#communaute" },
+  { label: "Coachs", href: "#coachs" },
   { label: "Formules", href: "#formules" },
   { label: "Planning", href: "#planning" },
-  { label: "La salle", href: "#lieu" },
 ];
 
 export function SiteHeader() {
@@ -41,7 +42,7 @@ export function SiteHeader() {
             <CactLogo className="h-8 w-auto" />
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-7 text-sm text-foreground/85">
+          <nav className="hidden lg:flex items-center gap-6 text-sm text-foreground/85">
             {NAV.map((n) => (
               <a key={n.href} href={n.href} className="hover:text-primary transition-colors">
                 {n.label}
