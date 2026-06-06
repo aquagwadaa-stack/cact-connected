@@ -13,12 +13,15 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AppReservationsRouteImport } from './routes/app/reservations'
 import { Route as AppProfilRouteImport } from './routes/app/profil'
 import { Route as AppPlanningRouteImport } from './routes/app/planning'
 import { Route as AppHyroxRouteImport } from './routes/app/hyrox'
+import { Route as AppFormulesRouteImport } from './routes/app/formules'
 import { Route as AppConnexionRouteImport } from './routes/app/connexion'
 import { Route as AdminPlanningRouteImport } from './routes/admin/planning'
 import { Route as AdminMembresRouteImport } from './routes/admin/membres'
+import { Route as AdminFormulesRouteImport } from './routes/admin/formules'
 import { Route as AdminContenuRouteImport } from './routes/admin/contenu'
 
 const AdminRouteRoute = AdminRouteRouteImport.update({
@@ -41,6 +44,11 @@ const AdminIndexRoute = AdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AppReservationsRoute = AppReservationsRouteImport.update({
+  id: '/app/reservations',
+  path: '/app/reservations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppProfilRoute = AppProfilRouteImport.update({
   id: '/app/profil',
   path: '/app/profil',
@@ -54,6 +62,11 @@ const AppPlanningRoute = AppPlanningRouteImport.update({
 const AppHyroxRoute = AppHyroxRouteImport.update({
   id: '/app/hyrox',
   path: '/app/hyrox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppFormulesRoute = AppFormulesRouteImport.update({
+  id: '/app/formules',
+  path: '/app/formules',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppConnexionRoute = AppConnexionRouteImport.update({
@@ -71,6 +84,11 @@ const AdminMembresRoute = AdminMembresRouteImport.update({
   path: '/membres',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminFormulesRoute = AdminFormulesRouteImport.update({
+  id: '/formules',
+  path: '/formules',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminContenuRoute = AdminContenuRouteImport.update({
   id: '/contenu',
   path: '/contenu',
@@ -81,24 +99,30 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/admin/contenu': typeof AdminContenuRoute
+  '/admin/formules': typeof AdminFormulesRoute
   '/admin/membres': typeof AdminMembresRoute
   '/admin/planning': typeof AdminPlanningRoute
   '/app/connexion': typeof AppConnexionRoute
+  '/app/formules': typeof AppFormulesRoute
   '/app/hyrox': typeof AppHyroxRoute
   '/app/planning': typeof AppPlanningRoute
   '/app/profil': typeof AppProfilRoute
+  '/app/reservations': typeof AppReservationsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin/contenu': typeof AdminContenuRoute
+  '/admin/formules': typeof AdminFormulesRoute
   '/admin/membres': typeof AdminMembresRoute
   '/admin/planning': typeof AdminPlanningRoute
   '/app/connexion': typeof AppConnexionRoute
+  '/app/formules': typeof AppFormulesRoute
   '/app/hyrox': typeof AppHyroxRoute
   '/app/planning': typeof AppPlanningRoute
   '/app/profil': typeof AppProfilRoute
+  '/app/reservations': typeof AppReservationsRoute
   '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
 }
@@ -107,12 +131,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
   '/admin/contenu': typeof AdminContenuRoute
+  '/admin/formules': typeof AdminFormulesRoute
   '/admin/membres': typeof AdminMembresRoute
   '/admin/planning': typeof AdminPlanningRoute
   '/app/connexion': typeof AppConnexionRoute
+  '/app/formules': typeof AppFormulesRoute
   '/app/hyrox': typeof AppHyroxRoute
   '/app/planning': typeof AppPlanningRoute
   '/app/profil': typeof AppProfilRoute
+  '/app/reservations': typeof AppReservationsRoute
   '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
 }
@@ -122,24 +149,30 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/admin/contenu'
+    | '/admin/formules'
     | '/admin/membres'
     | '/admin/planning'
     | '/app/connexion'
+    | '/app/formules'
     | '/app/hyrox'
     | '/app/planning'
     | '/app/profil'
+    | '/app/reservations'
     | '/admin/'
     | '/app/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/admin/contenu'
+    | '/admin/formules'
     | '/admin/membres'
     | '/admin/planning'
     | '/app/connexion'
+    | '/app/formules'
     | '/app/hyrox'
     | '/app/planning'
     | '/app/profil'
+    | '/app/reservations'
     | '/admin'
     | '/app'
   id:
@@ -147,12 +180,15 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/admin/contenu'
+    | '/admin/formules'
     | '/admin/membres'
     | '/admin/planning'
     | '/app/connexion'
+    | '/app/formules'
     | '/app/hyrox'
     | '/app/planning'
     | '/app/profil'
+    | '/app/reservations'
     | '/admin/'
     | '/app/'
   fileRoutesById: FileRoutesById
@@ -161,9 +197,11 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AppConnexionRoute: typeof AppConnexionRoute
+  AppFormulesRoute: typeof AppFormulesRoute
   AppHyroxRoute: typeof AppHyroxRoute
   AppPlanningRoute: typeof AppPlanningRoute
   AppProfilRoute: typeof AppProfilRoute
+  AppReservationsRoute: typeof AppReservationsRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
@@ -197,6 +235,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/app/reservations': {
+      id: '/app/reservations'
+      path: '/app/reservations'
+      fullPath: '/app/reservations'
+      preLoaderRoute: typeof AppReservationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/profil': {
       id: '/app/profil'
       path: '/app/profil'
@@ -216,6 +261,13 @@ declare module '@tanstack/react-router' {
       path: '/app/hyrox'
       fullPath: '/app/hyrox'
       preLoaderRoute: typeof AppHyroxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/formules': {
+      id: '/app/formules'
+      path: '/app/formules'
+      fullPath: '/app/formules'
+      preLoaderRoute: typeof AppFormulesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/app/connexion': {
@@ -239,6 +291,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminMembresRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/formules': {
+      id: '/admin/formules'
+      path: '/formules'
+      fullPath: '/admin/formules'
+      preLoaderRoute: typeof AdminFormulesRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/contenu': {
       id: '/admin/contenu'
       path: '/contenu'
@@ -251,6 +310,7 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteRouteChildren {
   AdminContenuRoute: typeof AdminContenuRoute
+  AdminFormulesRoute: typeof AdminFormulesRoute
   AdminMembresRoute: typeof AdminMembresRoute
   AdminPlanningRoute: typeof AdminPlanningRoute
   AdminIndexRoute: typeof AdminIndexRoute
@@ -258,6 +318,7 @@ interface AdminRouteRouteChildren {
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminContenuRoute: AdminContenuRoute,
+  AdminFormulesRoute: AdminFormulesRoute,
   AdminMembresRoute: AdminMembresRoute,
   AdminPlanningRoute: AdminPlanningRoute,
   AdminIndexRoute: AdminIndexRoute,
@@ -271,11 +332,23 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRouteRoute: AdminRouteRouteWithChildren,
   AppConnexionRoute: AppConnexionRoute,
+  AppFormulesRoute: AppFormulesRoute,
   AppHyroxRoute: AppHyroxRoute,
   AppPlanningRoute: AppPlanningRoute,
   AppProfilRoute: AppProfilRoute,
+  AppReservationsRoute: AppReservationsRoute,
   AppIndexRoute: AppIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

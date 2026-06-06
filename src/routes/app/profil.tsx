@@ -1,92 +1,91 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Settings, CreditCard, Bell, Shield, LogOut, ChevronRight } from "lucide-react";
+import { ArrowLeft, Bell, ChevronRight, CreditCard, LogOut, Settings, Shield } from "lucide-react";
 import { MobileTabBar } from "@/components/cact/MobileTabBar";
+import { DEMO_MEMBER } from "@/lib/cact-demo";
 
 export const Route = createFileRoute("/app/profil")({
-  head: () => ({ meta: [{ title: "Mon profil · CACT" }] }),
+  head: () => ({ meta: [{ title: "Mon profil | CACT Health Community" }] }),
   component: ProfilPage,
 });
-
-const HISTORY = [
-  { date: "8 juin", type: "WOD Collectif", coach: "Armel" },
-  { date: "6 juin", type: "HYROX Training", coach: "Sandra" },
-  { date: "4 juin", type: "Force & Power", coach: "Armel" },
-  { date: "2 juin", type: "WOD Collectif", coach: "Sandra" },
-];
 
 function ProfilPage() {
   return (
     <main className="min-h-[100svh] bg-background pb-28 text-foreground">
-      <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border/60 bg-background/85 px-5 py-4 backdrop-blur-xl">
+      <header className="sticky top-0 z-20 flex items-center justify-between border-b border-border/60 bg-background/92 px-5 py-4 backdrop-blur-xl">
         <Link to="/app" className="inline-flex items-center gap-2 text-xs text-muted-foreground">
-          <ArrowLeft size={14} /> Retour
+          <ArrowLeft size={14} /> Accueil
         </Link>
         <h1 className="text-display text-xl">Profil</h1>
-        <button className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground">
+        <button
+          className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground"
+          aria-label="Paramètres"
+        >
           <Settings size={15} />
         </button>
       </header>
 
-      <div className="mx-auto max-w-md px-5 pt-6">
+      <div className="mx-auto max-w-md px-5 pt-7">
         <div className="flex items-center gap-4">
-          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-cact-deep text-2xl font-bold text-primary-foreground">M</div>
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary to-cact-deep text-2xl font-bold text-primary-foreground">
+            M
+          </div>
           <div>
-            <div className="text-display text-2xl">Marie Dubois</div>
-            <div className="text-xs text-muted-foreground">Membre depuis mars 2025</div>
+            <div className="text-display text-2xl">{DEMO_MEMBER.fullName}</div>
+            <div className="text-xs text-muted-foreground">{DEMO_MEMBER.email}</div>
           </div>
         </div>
 
-        <section className="mt-6 rounded-3xl border border-border bg-card p-5">
-          <div className="text-xs uppercase tracking-wider text-primary">Abonnement</div>
-          <div className="mt-2 text-display text-xl">3 séances / semaine</div>
-          <div className="mt-1 text-xs text-muted-foreground">75 €/mois · renouvellement le 1er juillet</div>
-          <div className="mt-4 flex gap-2">
-            <button className="flex-1 rounded-full border border-border py-2 text-xs font-semibold btn-press">Gérer</button>
-            <button className="flex-1 rounded-full bg-primary py-2 text-xs font-semibold text-primary-foreground btn-press">Changer de formule</button>
-          </div>
-        </section>
-
-        <section className="mt-6 grid grid-cols-3 gap-3 text-center">
-          {[
-            { v: "7", l: "crédits" },
-            { v: "32", l: "séances" },
-            { v: "5", l: "PR" },
-          ].map((s) => (
-            <div key={s.l} className="rounded-2xl border border-border bg-card p-4">
-              <div className="text-display text-3xl text-primary">{s.v}</div>
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">{s.l}</div>
+        <section className="mt-7 rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/12 to-card p-5">
+          <div className="text-xs uppercase tracking-wider text-primary">Formule active</div>
+          <div className="mt-2 text-display text-2xl">{DEMO_MEMBER.plan}</div>
+          <div className="mt-1 text-xs text-muted-foreground">{DEMO_MEMBER.renewal}</div>
+          <div className="mt-5 flex items-end justify-between">
+            <div>
+              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                Séances disponibles
+              </div>
+              <div className="mt-1 text-display text-4xl text-primary">{DEMO_MEMBER.credits}</div>
             </div>
-          ))}
-        </section>
-
-        <section className="mt-8">
-          <h2 className="text-display text-2xl">Historique</h2>
-          <ul className="mt-4 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
-            {HISTORY.map((h, i) => (
-              <li key={i} className="flex items-center gap-3 px-4 py-3">
-                <div className="w-14 text-xs text-muted-foreground">{h.date}</div>
-                <div className="min-w-0 flex-1 text-sm font-medium">{h.type}</div>
-                <div className="text-xs text-muted-foreground">{h.coach}</div>
-              </li>
-            ))}
-          </ul>
+            <Link
+              to="/app/formules"
+              className="rounded-full bg-primary px-4 py-2.5 text-xs font-semibold text-primary-foreground"
+            >
+              Voir les formules
+            </Link>
+          </div>
         </section>
 
         <section className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
           {[
-            { icon: CreditCard, label: "Paiement & factures" },
-            { icon: Bell, label: "Notifications" },
-            { icon: Shield, label: "Confidentialité" },
-          ].map(({ icon: Icon, label }) => (
-            <button key={label} className="flex w-full items-center gap-3 border-b border-border px-4 py-4 text-left last:border-0">
-              <Icon size={16} className="text-muted-foreground" />
-              <span className="flex-1 text-sm">{label}</span>
+            { icon: CreditCard, label: "Paiements et factures", detail: "Démonstration" },
+            { icon: Bell, label: "Notifications", detail: "Rappels activés" },
+            { icon: Shield, label: "Confidentialité", detail: "Gérer mes données" },
+          ].map(({ icon: Icon, label, detail }) => (
+            <button
+              key={label}
+              className="flex w-full items-center gap-3 border-b border-border px-4 py-4 text-left last:border-0"
+            >
+              <Icon size={16} className="text-primary" />
+              <span className="min-w-0 flex-1">
+                <span className="block text-sm">{label}</span>
+                <span className="block text-[11px] text-muted-foreground">{detail}</span>
+              </span>
               <ChevronRight size={16} className="text-muted-foreground" />
             </button>
           ))}
         </section>
 
-        <Link to="/app/connexion" className="mt-6 flex items-center justify-center gap-2 rounded-full border border-border py-3 text-sm text-muted-foreground btn-press">
+        <div className="mt-7 rounded-2xl border border-border bg-card p-4">
+          <div className="text-xs font-semibold">Besoin d'aide ?</div>
+          <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+            Dans la version finale, ce bloc pourra ouvrir un contact direct avec Sandra ou Armel.
+          </p>
+        </div>
+
+        <Link
+          to="/app/connexion"
+          className="mt-6 flex items-center justify-center gap-2 rounded-full border border-border py-3 text-sm text-muted-foreground btn-press"
+        >
           <LogOut size={14} /> Se déconnecter
         </Link>
       </div>

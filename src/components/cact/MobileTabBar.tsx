@@ -1,11 +1,11 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Home, Calendar, User, Trophy } from "lucide-react";
+import { Home, Calendar, User, ClipboardCheck } from "lucide-react";
 
 type Tab = { to: string; label: string; icon: typeof Home; exact?: boolean };
 const TABS: Tab[] = [
   { to: "/app", label: "Accueil", icon: Home, exact: true },
   { to: "/app/planning", label: "Planning", icon: Calendar },
-  { to: "/app/hyrox", label: "HYROX", icon: Trophy },
+  { to: "/app/reservations", label: "Mes séances", icon: ClipboardCheck },
   { to: "/app/profil", label: "Profil", icon: User },
 ];
 
@@ -25,7 +25,9 @@ export function MobileTabBar() {
                   active ? "text-primary" : "text-muted-foreground hover:text-foreground"
                 }`}
               >
-                <span className={`flex h-9 w-9 items-center justify-center rounded-full transition-all ${active ? "bg-primary/15" : ""}`}>
+                <span
+                  className={`flex h-9 w-9 items-center justify-center rounded-full transition-all ${active ? "bg-primary/15" : ""}`}
+                >
                   <Icon size={18} />
                 </span>
                 <span>{label}</span>

@@ -4,10 +4,10 @@ import { Menu, X } from "lucide-react";
 import { CactLogo } from "./Logo";
 
 const NAV = [
-  { label: "Le concept", href: "#concept" },
-  { label: "HYROX", href: "#hyrox" },
+  { label: "L'esprit CACT", href: "#concept" },
+  { label: "Les séances", href: "#hyrox" },
   { label: "Communauté", href: "#communaute" },
-  { label: "Coachs", href: "#coachs" },
+  { label: "Sandra & Armel", href: "#coachs" },
   { label: "Formules", href: "#formules" },
   { label: "Planning", href: "#planning" },
 ];
@@ -25,7 +25,9 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -52,10 +54,10 @@ export function SiteHeader() {
 
           <div className="flex items-center gap-2">
             <Link
-              to="/app"
+              to="/app/planning"
               className="hidden sm:inline-flex h-10 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground btn-press hover:bg-primary/90"
             >
-              Réserver
+              Voir les séances
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -92,11 +94,11 @@ export function SiteHeader() {
           </nav>
           <div className="mt-auto flex flex-col gap-3 pt-8">
             <Link
-              to="/app"
+              to="/app/planning"
               onClick={() => setOpen(false)}
               className="inline-flex h-14 items-center justify-center rounded-full bg-primary text-base font-semibold text-primary-foreground btn-press"
             >
-              Réserver une séance
+              Voir le planning
             </Link>
             <Link
               to="/app/connexion"
@@ -106,7 +108,7 @@ export function SiteHeader() {
               Espace membre
             </Link>
             <p className="pt-4 text-center text-xs text-muted-foreground">
-              Saint-François, Guadeloupe · contact@cact-health.fr
+              Saint-François, Guadeloupe · @cact_health_community
             </p>
           </div>
         </div>

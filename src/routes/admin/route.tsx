@@ -1,5 +1,13 @@
 import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
-import { LayoutDashboard, Users, CalendarDays, FileText, ArrowLeft, Shield } from "lucide-react";
+import {
+  LayoutDashboard,
+  Users,
+  CalendarDays,
+  FileText,
+  ArrowLeft,
+  Shield,
+  CreditCard,
+} from "lucide-react";
 import { CactLogo } from "@/components/cact/Logo";
 
 export const Route = createFileRoute("/admin")({
@@ -12,6 +20,7 @@ const NAV: NavItem[] = [
   { to: "/admin", label: "Vue d'ensemble", icon: LayoutDashboard, exact: true },
   { to: "/admin/membres", label: "Membres", icon: Users },
   { to: "/admin/planning", label: "Planning", icon: CalendarDays },
+  { to: "/admin/formules", label: "Formules", icon: CreditCard },
   { to: "/admin/contenu", label: "Contenu", icon: FileText },
 ];
 
@@ -24,7 +33,10 @@ function AdminLayout() {
       <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
           <div className="flex items-center gap-4">
-            <Link to="/" className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground"
+            >
               <ArrowLeft size={14} /> Site
             </Link>
             <div className="hidden h-6 w-px bg-border sm:block" />
@@ -40,17 +52,23 @@ function AdminLayout() {
               <div className="text-xs font-semibold">Sandra</div>
               <div className="text-[10px] text-muted-foreground">Coach · Admin</div>
             </div>
-            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-cact-deep text-center text-sm font-bold leading-9 text-primary-foreground">S</div>
+            <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-cact-deep text-center text-sm font-bold leading-9 text-primary-foreground">
+              S
+            </div>
           </div>
         </div>
 
         {/* Mobile tabs */}
-        <nav className="mx-auto max-w-7xl overflow-x-auto px-5 lg:hidden">
+        <nav className="scrollbar-none mx-auto max-w-7xl overflow-x-auto px-5 lg:hidden">
           <div className="flex gap-1 pb-3">
             {NAV.map(({ to, label, icon: Icon, exact }) => {
               const active = exact ? path === to : path.startsWith(to);
               return (
-                <Link key={to} to={to} className={`inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs ${active ? "bg-primary text-primary-foreground" : "border border-border text-foreground/80"}`}>
+                <Link
+                  key={to}
+                  to={to}
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs ${active ? "bg-primary text-primary-foreground" : "border border-border text-foreground/80"}`}
+                >
                   <Icon size={13} /> {label}
                 </Link>
               );
@@ -66,15 +84,21 @@ function AdminLayout() {
             {NAV.map(({ to, label, icon: Icon, exact }) => {
               const active = exact ? path === to : path.startsWith(to);
               return (
-                <Link key={to} to={to} className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors ${active ? "bg-primary/15 text-primary" : "text-foreground/80 hover:bg-card"}`}>
+                <Link
+                  key={to}
+                  to={to}
+                  className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm transition-colors ${active ? "bg-primary/15 text-primary" : "text-foreground/80 hover:bg-card"}`}
+                >
                   <Icon size={16} /> {label}
                 </Link>
               );
             })}
           </nav>
           <div className="mt-8 rounded-2xl border border-border bg-card p-4">
-            <div className="text-[10px] uppercase tracking-wider text-muted-foreground">Démonstration</div>
-            <p className="mt-1 text-xs text-muted-foreground">Données fictives — aucune action n'affecte la production.</p>
+            <div className="text-[10px] uppercase tracking-wider text-primary">Démonstration</div>
+            <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+              Les actions fonctionnent visuellement, mais aucune donnée réelle n'est enregistrée.
+            </p>
           </div>
         </aside>
 
