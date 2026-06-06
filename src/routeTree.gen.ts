@@ -9,10 +9,23 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
+import { Route as AdminIndexRouteImport } from './routes/admin/index'
+import { Route as AppProfilRouteImport } from './routes/app/profil'
+import { Route as AppPlanningRouteImport } from './routes/app/planning'
+import { Route as AppHyroxRouteImport } from './routes/app/hyrox'
 import { Route as AppConnexionRouteImport } from './routes/app/connexion'
+import { Route as AdminPlanningRouteImport } from './routes/admin/planning'
+import { Route as AdminMembresRouteImport } from './routes/admin/membres'
+import { Route as AdminContenuRouteImport } from './routes/admin/contenu'
 
+const AdminRouteRoute = AdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -23,44 +36,146 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/app/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AppProfilRoute = AppProfilRouteImport.update({
+  id: '/app/profil',
+  path: '/app/profil',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppPlanningRoute = AppPlanningRouteImport.update({
+  id: '/app/planning',
+  path: '/app/planning',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppHyroxRoute = AppHyroxRouteImport.update({
+  id: '/app/hyrox',
+  path: '/app/hyrox',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppConnexionRoute = AppConnexionRouteImport.update({
   id: '/app/connexion',
   path: '/app/connexion',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPlanningRoute = AdminPlanningRouteImport.update({
+  id: '/planning',
+  path: '/planning',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminMembresRoute = AdminMembresRouteImport.update({
+  id: '/membres',
+  path: '/membres',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminContenuRoute = AdminContenuRouteImport.update({
+  id: '/contenu',
+  path: '/contenu',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/admin/contenu': typeof AdminContenuRoute
+  '/admin/membres': typeof AdminMembresRoute
+  '/admin/planning': typeof AdminPlanningRoute
   '/app/connexion': typeof AppConnexionRoute
+  '/app/hyrox': typeof AppHyroxRoute
+  '/app/planning': typeof AppPlanningRoute
+  '/app/profil': typeof AppProfilRoute
+  '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin/contenu': typeof AdminContenuRoute
+  '/admin/membres': typeof AdminMembresRoute
+  '/admin/planning': typeof AdminPlanningRoute
   '/app/connexion': typeof AppConnexionRoute
+  '/app/hyrox': typeof AppHyroxRoute
+  '/app/planning': typeof AppPlanningRoute
+  '/app/profil': typeof AppProfilRoute
+  '/admin': typeof AdminIndexRoute
   '/app': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRouteRouteWithChildren
+  '/admin/contenu': typeof AdminContenuRoute
+  '/admin/membres': typeof AdminMembresRoute
+  '/admin/planning': typeof AdminPlanningRoute
   '/app/connexion': typeof AppConnexionRoute
+  '/app/hyrox': typeof AppHyroxRoute
+  '/app/planning': typeof AppPlanningRoute
+  '/app/profil': typeof AppProfilRoute
+  '/admin/': typeof AdminIndexRoute
   '/app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app/connexion' | '/app/'
+  fullPaths:
+    | '/'
+    | '/admin'
+    | '/admin/contenu'
+    | '/admin/membres'
+    | '/admin/planning'
+    | '/app/connexion'
+    | '/app/hyrox'
+    | '/app/planning'
+    | '/app/profil'
+    | '/admin/'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app/connexion' | '/app'
-  id: '__root__' | '/' | '/app/connexion' | '/app/'
+  to:
+    | '/'
+    | '/admin/contenu'
+    | '/admin/membres'
+    | '/admin/planning'
+    | '/app/connexion'
+    | '/app/hyrox'
+    | '/app/planning'
+    | '/app/profil'
+    | '/admin'
+    | '/app'
+  id:
+    | '__root__'
+    | '/'
+    | '/admin'
+    | '/admin/contenu'
+    | '/admin/membres'
+    | '/admin/planning'
+    | '/app/connexion'
+    | '/app/hyrox'
+    | '/app/planning'
+    | '/app/profil'
+    | '/admin/'
+    | '/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRouteRoute: typeof AdminRouteRouteWithChildren
   AppConnexionRoute: typeof AppConnexionRoute
+  AppHyroxRoute: typeof AppHyroxRoute
+  AppPlanningRoute: typeof AppPlanningRoute
+  AppProfilRoute: typeof AppProfilRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -75,6 +190,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/app/profil': {
+      id: '/app/profil'
+      path: '/app/profil'
+      fullPath: '/app/profil'
+      preLoaderRoute: typeof AppProfilRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/planning': {
+      id: '/app/planning'
+      path: '/app/planning'
+      fullPath: '/app/planning'
+      preLoaderRoute: typeof AppPlanningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/hyrox': {
+      id: '/app/hyrox'
+      path: '/app/hyrox'
+      fullPath: '/app/hyrox'
+      preLoaderRoute: typeof AppHyroxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/app/connexion': {
       id: '/app/connexion'
       path: '/app/connexion'
@@ -82,12 +225,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppConnexionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/planning': {
+      id: '/admin/planning'
+      path: '/planning'
+      fullPath: '/admin/planning'
+      preLoaderRoute: typeof AdminPlanningRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/membres': {
+      id: '/admin/membres'
+      path: '/membres'
+      fullPath: '/admin/membres'
+      preLoaderRoute: typeof AdminMembresRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/contenu': {
+      id: '/admin/contenu'
+      path: '/contenu'
+      fullPath: '/admin/contenu'
+      preLoaderRoute: typeof AdminContenuRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
   }
 }
 
+interface AdminRouteRouteChildren {
+  AdminContenuRoute: typeof AdminContenuRoute
+  AdminMembresRoute: typeof AdminMembresRoute
+  AdminPlanningRoute: typeof AdminPlanningRoute
+  AdminIndexRoute: typeof AdminIndexRoute
+}
+
+const AdminRouteRouteChildren: AdminRouteRouteChildren = {
+  AdminContenuRoute: AdminContenuRoute,
+  AdminMembresRoute: AdminMembresRoute,
+  AdminPlanningRoute: AdminPlanningRoute,
+  AdminIndexRoute: AdminIndexRoute,
+}
+
+const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
+  AdminRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRouteRoute: AdminRouteRouteWithChildren,
   AppConnexionRoute: AppConnexionRoute,
+  AppHyroxRoute: AppHyroxRoute,
+  AppPlanningRoute: AppPlanningRoute,
+  AppProfilRoute: AppProfilRoute,
   AppIndexRoute: AppIndexRoute,
 }
 export const routeTree = rootRouteImport
