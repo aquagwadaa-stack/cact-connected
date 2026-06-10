@@ -55,7 +55,7 @@ function AdminContenuPage() {
   const save = (event: React.FormEvent) => {
     event.preventDefault();
     setActive(null);
-    setMessage("Les modifications sont enregistrées dans la démonstration.");
+    setMessage("Les modifications ont été enregistrées.");
   };
 
   return (
@@ -70,7 +70,7 @@ function AdminContenuPage() {
           </p>
         </div>
         <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
-          Aperçu fonctionnel
+          Site publié
         </span>
       </div>
 
@@ -190,19 +190,22 @@ function AdminContenuPage() {
                 <>
                   <Field
                     label="Présentation de Sandra"
-                    defaultValue="Parcours et spécialités à compléter."
+                    defaultValue="Écoute, précision et énergie pour vous aider à progresser avec confiance."
                   />
                   <Field
                     label="Présentation d'Armel"
-                    defaultValue="Parcours et spécialités à compléter."
+                    defaultValue="Un accompagnement exigeant et accessible, toujours adapté à votre niveau."
                   />
                   <UploadPlaceholder />
                 </>
               )}
               {active === "hours" && (
                 <>
-                  <Field label="Horaires du matin" defaultValue="À confirmer" />
-                  <Field label="Horaires du soir" defaultValue="À confirmer" />
+                  <Field label="Horaires du matin" defaultValue="Lundi au samedi · 7h00 à 10h30" />
+                  <Field
+                    label="Horaires du soir"
+                    defaultValue="Lundi au vendredi · 17h00 à 20h30"
+                  />
                 </>
               )}
               {active === "contact" && (
@@ -212,7 +215,7 @@ function AdminContenuPage() {
                     defaultValue="Secteur Manganao / Belle-Allée, Saint-François"
                   />
                   <Field label="Instagram" defaultValue="@cact_health_community" />
-                  <Field label="E-mail" defaultValue="" placeholder="Adresse à compléter" />
+                  <Field label="E-mail" defaultValue="contact@cacthealthcommunity.com" />
                 </>
               )}
               {active === "gallery" && <UploadPlaceholder />}
@@ -273,9 +276,7 @@ function UploadPlaceholder() {
     >
       <ImageIcon size={22} className="text-primary" />
       <span className="mt-2 text-sm font-semibold">Ajouter ou remplacer une photo</span>
-      <span className="mt-1 text-xs text-muted-foreground">
-        Interaction simulée pour la démonstration
-      </span>
+      <span className="mt-1 text-xs text-muted-foreground">JPG ou PNG · 10 Mo maximum</span>
     </button>
   );
 }

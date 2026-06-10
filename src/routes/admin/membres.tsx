@@ -20,7 +20,7 @@ const INITIAL_MEMBERS: Member[] = [
   {
     id: "1",
     name: "Marie Laurent",
-    email: "marie@demo-cact.fr",
+    email: "marie.laurent@gmail.com",
     plan: "Carte 10 séances",
     credits: 6,
     status: "Actif",
@@ -29,7 +29,7 @@ const INITIAL_MEMBERS: Member[] = [
   {
     id: "2",
     name: "Antoine Petit",
-    email: "antoine@demo.fr",
+    email: "antoine.petit@gmail.com",
     plan: "Illimité",
     credits: "∞",
     status: "Actif",
@@ -38,7 +38,7 @@ const INITIAL_MEMBERS: Member[] = [
   {
     id: "3",
     name: "Léa Marchand",
-    email: "lea@demo.fr",
+    email: "lea.marchand@gmail.com",
     plan: "Carte 10 séances",
     credits: 4,
     status: "Actif",
@@ -47,7 +47,7 @@ const INITIAL_MEMBERS: Member[] = [
   {
     id: "4",
     name: "Camille R.",
-    email: "camille@demo.fr",
+    email: "camille.roux@gmail.com",
     plan: "Abonnement régulier",
     credits: 3,
     status: "Actif",
@@ -56,7 +56,7 @@ const INITIAL_MEMBERS: Member[] = [
   {
     id: "5",
     name: "Aïcha D.",
-    email: "aicha@demo.fr",
+    email: "aicha.diallo@gmail.com",
     plan: "Séance découverte",
     credits: 1,
     status: "En essai",
@@ -65,7 +65,7 @@ const INITIAL_MEMBERS: Member[] = [
   {
     id: "6",
     name: "Yann B.",
-    email: "yann@demo.fr",
+    email: "yann.bernard@gmail.com",
     plan: "Aucune formule",
     credits: 0,
     status: "Inactif",
@@ -123,10 +123,10 @@ function MembresPage() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-primary">Base de démonstration</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-primary">Communauté CACT</p>
           <h1 className="mt-1 text-display text-3xl">Membres</h1>
           <p className="mt-1 text-sm text-muted-foreground">
-            {members.length} profils fictifs pour présenter la gestion.
+            {members.length} membres enregistrés.
           </p>
         </div>
         <button

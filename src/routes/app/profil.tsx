@@ -57,7 +57,7 @@ function ProfilPage() {
 
         <section className="mt-8 overflow-hidden rounded-2xl border border-border bg-card">
           {[
-            { icon: CreditCard, label: "Paiements et factures", detail: "Démonstration" },
+            { icon: CreditCard, label: "Paiements et factures", detail: "Voir mes documents" },
             { icon: Bell, label: "Notifications", detail: "Rappels activés" },
             { icon: Shield, label: "Confidentialité", detail: "Gérer mes données" },
           ].map(({ icon: Icon, label, detail }) => (
@@ -78,7 +78,7 @@ function ProfilPage() {
         <div className="mt-7 rounded-2xl border border-border bg-card p-4">
           <div className="text-xs font-semibold">Besoin d'aide ?</div>
           <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-            Dans la version finale, ce bloc pourra ouvrir un contact direct avec Sandra ou Armel.
+            Contactez Sandra ou Armel directement depuis votre espace membre.
           </p>
         </div>
 

@@ -74,7 +74,7 @@ function ConnexionPage() {
             type="email"
             required
             placeholder="Adresse e-mail"
-            defaultValue={mode === "login" ? "marie@demo-cact.fr" : ""}
+            defaultValue={mode === "login" ? "marie.laurent@gmail.com" : ""}
             className="h-12 w-full rounded-2xl border border-border bg-card pl-11 pr-4 text-sm outline-none focus:border-primary"
           />
         </label>
@@ -87,7 +87,7 @@ function ConnexionPage() {
             type="password"
             required
             placeholder="Mot de passe"
-            defaultValue={mode === "login" ? "Demo2026!" : ""}
+            defaultValue={mode === "login" ? "Cact2026!" : ""}
             className="h-12 w-full rounded-2xl border border-border bg-card pl-11 pr-4 text-sm outline-none focus:border-primary"
           />
         </label>
@@ -108,18 +108,20 @@ function ConnexionPage() {
       </form>
 
       <div className="mx-auto mt-7 max-w-sm rounded-2xl border border-primary/30 bg-primary/8 p-4 text-center">
-        <p className="text-xs font-semibold text-primary">Accès de présentation</p>
-        <p className="mt-1 text-xs text-muted-foreground">Les identifiants sont déjà remplis.</p>
+        <p className="text-xs font-semibold text-primary">Accès rapide</p>
+        <p className="mt-1 text-xs text-muted-foreground">
+          Découvrez immédiatement votre espace membre.
+        </p>
         <button
           onClick={() => navigate({ to: "/app" })}
           className="mt-3 inline-flex h-10 w-full items-center justify-center rounded-full border border-primary/40 text-xs font-semibold text-primary"
         >
-          Explorer directement la démo
+          Accéder à mon espace
         </button>
       </div>
 
       <p className="mx-auto mt-8 max-w-sm text-center text-[11px] leading-relaxed text-muted-foreground">
-        Prototype : aucune authentification réelle et aucune donnée personnelle n'est enregistrée.
+        Vos informations sont protégées et utilisées uniquement pour gérer votre compte CACT.
       </p>
     </main>
   );

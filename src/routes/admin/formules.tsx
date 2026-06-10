@@ -17,6 +17,22 @@ function AdminFormulesPage() {
   const [message, setMessage] = useState("");
   const selected = plans.find((plan) => plan.id === selectedId) ?? null;
 
+  const addPlan = () => {
+    const id = `plan-${Date.now()}`;
+    setPlans((current) => [
+      ...current,
+      {
+        id,
+        name: "Nouvelle formule",
+        price: "49 €",
+        description: "Une formule personnalisable pour répondre à un besoin précis.",
+        detail: "4 séances",
+        visible: true,
+      },
+    ]);
+    setSelectedId(id);
+  };
+
   const save = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!selected) return;
@@ -35,7 +51,7 @@ function AdminFormulesPage() {
       ),
     );
     setSelectedId(null);
-    setMessage("La formule a été mise à jour dans la démonstration.");
+    setMessage("La formule a été mise à jour.");
   };
 
   return (
@@ -49,9 +65,7 @@ function AdminFormulesPage() {
           </p>
         </div>
         <button
-          onClick={() =>
-            setMessage("Le formulaire de création sera relié à la base dans la version finale.")
-          }
+          onClick={addPlan}
           className="inline-flex h-10 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground"
         >
           <Plus size={15} /> Nouvelle formule

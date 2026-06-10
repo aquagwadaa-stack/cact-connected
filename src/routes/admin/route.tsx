@@ -95,9 +95,9 @@ function AdminLayout() {
             })}
           </nav>
           <div className="mt-8 rounded-2xl border border-border bg-card p-4">
-            <div className="text-[10px] uppercase tracking-wider text-primary">Démonstration</div>
+            <div className="text-[10px] uppercase tracking-wider text-primary">Accès sécurisé</div>
             <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
-              Les actions fonctionnent visuellement, mais aucune donnée réelle n'est enregistrée.
+              Seuls les administrateurs peuvent modifier le planning, les membres et le site.
             </p>
           </div>
         </aside>

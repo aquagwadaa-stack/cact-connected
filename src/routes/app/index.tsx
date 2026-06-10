@@ -45,7 +45,7 @@ function AppHome() {
             </p>
           </div>
           <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
-            Démo
+            Membre actif
           </span>
         </div>
 
@@ -175,8 +175,7 @@ function AppHome() {
 
         <div className="mt-7 flex items-start gap-3 rounded-2xl border border-border bg-card p-4 text-xs text-muted-foreground">
           <Sparkles size={16} className="mt-0.5 shrink-0 text-primary" />
-          Les données affichées servent à montrer le fonctionnement. Les formules et contenus
-          définitifs seront configurés avec CACT.
+          Pensez à annuler au moins 4 heures avant la séance afin de conserver votre crédit.
         </div>
       </div>
 

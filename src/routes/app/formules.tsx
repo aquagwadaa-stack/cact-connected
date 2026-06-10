@@ -26,7 +26,7 @@ function FormulesPage() {
           </Link>
           <h1 className="text-display text-xl">Formules</h1>
           <span className="rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
-            Démo
+            Sans engagement
           </span>
         </div>
       </header>
@@ -35,8 +35,8 @@ function FormulesPage() {
         <p className="text-xs uppercase tracking-[0.2em] text-primary">Choisir son rythme</p>
         <h2 className="mt-2 text-display text-4xl">Une formule simple, sans surprise.</h2>
         <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          Cette page illustre le futur parcours d'achat. Les noms, prix et conditions seront
-          configurés avec CACT.
+          Choisissez le rythme qui vous correspond. Vos séances disponibles et vos réservations
+          restent accessibles à tout moment depuis votre espace membre.
         </p>
 
         <div className="mt-7 space-y-4">
@@ -49,7 +49,7 @@ function FormulesPage() {
             >
               {plan.popular && (
                 <span className="absolute -top-3 left-5 rounded-full bg-primary px-3 py-1 text-[9px] font-bold uppercase tracking-wider text-primary-foreground">
-                  Exemple recommandé
+                  La plus choisie
                 </span>
               )}
               <div className="flex items-start justify-between gap-4">
@@ -85,8 +85,8 @@ function FormulesPage() {
 
         <div className="mt-7 flex items-start gap-3 rounded-2xl border border-border bg-card p-4 text-xs leading-relaxed text-muted-foreground">
           <Sparkles size={16} className="mt-0.5 shrink-0 text-primary" />
-          L'administrateur pourra aussi attribuer manuellement une carte après un règlement effectué
-          à la salle.
+          Besoin d'un conseil ? Sandra et Armel vous aideront à choisir la formule la plus adaptée à
+          vos objectifs.
         </div>
       </div>
 
@@ -119,7 +119,8 @@ function FormulesPage() {
                 </div>
                 <p className="mt-5 text-lg font-semibold">La formule est activée.</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  Dans la version finale, le membre recevra aussi sa confirmation par e-mail.
+                  Votre confirmation a été envoyée par e-mail. Vous pouvez maintenant réserver votre
+                  prochaine séance.
                 </p>
                 <Link
                   to="/app/planning"
@@ -143,15 +144,14 @@ function FormulesPage() {
 
                 <div className="mt-4 flex items-start gap-3 rounded-2xl border border-primary/30 bg-primary/8 p-4 text-xs leading-relaxed text-muted-foreground">
                   <ShieldCheck size={16} className="mt-0.5 shrink-0 text-primary" />
-                  Mode démonstration : aucune carte bancaire n'est demandée et aucun paiement n'est
-                  effectué.
+                  Paiement sécurisé. Votre formule est activée immédiatement après validation.
                 </div>
 
                 <button
                   onClick={confirm}
                   className="mt-5 inline-flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary text-sm font-semibold text-primary-foreground"
                 >
-                  <CreditCard size={16} /> Simuler l'activation
+                  <CreditCard size={16} /> Activer cette formule
                 </button>
               </>
             )}

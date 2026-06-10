@@ -54,9 +54,9 @@ function HyroxPage() {
 
       <div className="mx-auto max-w-md px-5 pt-6">
         <p className="text-sm leading-relaxed text-muted-foreground">
-          CACT peut proposer un accompagnement dédié aux membres qui souhaitent découvrir le format
-          HYROX ou préparer une compétition. Les cycles, niveaux et objectifs seront définis avec
-          Sandra et Armel.
+          CACT accompagne les membres qui souhaitent découvrir le format HYROX ou préparer une
+          compétition. Chaque séance développe progressivement l'endurance, la technique et la
+          confiance.
         </p>
 
         <section className="mt-7 space-y-3">
@@ -78,7 +78,7 @@ function HyroxPage() {
 
         <section className="mt-8 rounded-3xl border border-primary/30 bg-primary/7 p-5">
           <div className="flex items-center gap-2 text-xs uppercase tracking-wider text-primary">
-            <Calendar size={14} /> Créneaux de démonstration
+            <Calendar size={14} /> Séances HYROX
           </div>
           <h3 className="mt-2 text-display text-2xl">Retrouvez les séances dans le planning</h3>
           <p className="mt-2 text-xs leading-relaxed text-muted-foreground">

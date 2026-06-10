@@ -117,7 +117,7 @@ function PlanningPage() {
         <div className="mt-5 flex items-end justify-between">
           <div>
             <p className="text-[10px] uppercase tracking-[0.18em] text-primary">
-              Données de démonstration
+              Planning de la semaine
             </p>
             <h2 className="mt-1 text-display text-2xl">
               {DEMO_DAYS.find((day) => day.key === dayKey)?.full}

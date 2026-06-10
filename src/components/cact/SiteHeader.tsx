@@ -9,7 +9,6 @@ const NAV = [
   { label: "Communauté", href: "#communaute" },
   { label: "Sandra & Armel", href: "#coachs" },
   { label: "Formules", href: "#formules" },
-  { label: "Planning", href: "#planning" },
 ];
 
 export function SiteHeader() {
@@ -57,7 +56,7 @@ export function SiteHeader() {
               to="/app/planning"
               className="hidden sm:inline-flex h-10 items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground btn-press hover:bg-primary/90"
             >
-              Voir les séances
+              Réserver
             </Link>
             <button
               onClick={() => setOpen((v) => !v)}
@@ -98,7 +97,7 @@ export function SiteHeader() {
               onClick={() => setOpen(false)}
               className="inline-flex h-14 items-center justify-center rounded-full bg-primary text-base font-semibold text-primary-foreground btn-press"
             >
-              Voir le planning
+              Réserver une séance
             </Link>
             <Link
               to="/app/connexion"

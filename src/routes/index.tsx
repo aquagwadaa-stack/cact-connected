@@ -7,7 +7,6 @@ import {
   Dumbbell,
   HeartPulse,
   Instagram,
-  Mail,
   MapPin,
   ShieldCheck,
   Sparkles,
@@ -20,7 +19,6 @@ import communityImg from "@/assets/community.jpg";
 import community3 from "@/assets/community-3.jpg";
 import { SiteHeader } from "@/components/cact/SiteHeader";
 import { CactLogo } from "@/components/cact/Logo";
-import { DEMO_SESSIONS, MEMBERSHIP_PLANS } from "@/lib/cact-demo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -49,13 +47,13 @@ const EXPERIENCES = [
   {
     icon: Users,
     title: "Cours collectifs",
-    text: "Des séances en petit groupe, guidées par un coach et ajustées à votre niveau du jour.",
+    text: "Des séances en petit groupe, guidées par un coach et adaptées à votre niveau du jour.",
     tag: "Énergie du groupe",
   },
   {
     icon: HeartPulse,
     title: "Coaching individuel",
-    text: "Un accompagnement plus personnel pour reprendre, progresser ou travailler un objectif précis.",
+    text: "Un accompagnement personnel pour reprendre, progresser ou travailler un objectif précis.",
     tag: "Sur rendez-vous",
   },
   {
@@ -69,24 +67,37 @@ const EXPERIENCES = [
 const PRINCIPLES = [
   {
     icon: ShieldCheck,
-    title: "Encadré",
-    text: "Sandra et Armel vous accompagnent à chaque séance.",
+    title: "Bien encadré",
+    text: "Sandra et Armel expliquent chaque mouvement et vous accompagnent pendant la séance.",
   },
   {
     icon: Sparkles,
-    title: "Adaptable",
-    text: "Chaque mouvement peut être ajusté à votre niveau.",
+    title: "Adapté à chacun",
+    text: "L'intensité et les mouvements s'ajustent à votre niveau, votre forme et vos objectifs.",
   },
   {
     icon: Users,
     title: "À taille humaine",
-    text: "12 participants maximum sur les créneaux de démonstration.",
+    text: "Chaque créneau est limité à 12 participants pour préserver la qualité du coaching.",
+  },
+];
+
+const COACHES = [
+  {
+    name: "Sandra",
+    initials: "S",
+    text: "Écoute, précision et énergie pour vous aider à progresser avec confiance.",
+    tone: "from-primary/35 via-cact-deep/55 to-background",
+  },
+  {
+    name: "Armel",
+    initials: "A",
+    text: "Un accompagnement exigeant et accessible, toujours adapté à votre niveau.",
+    tone: "from-cact-deep/70 via-primary/25 to-background",
   },
 ];
 
 function VitrinePage() {
-  const publicSessions = DEMO_SESSIONS.slice(0, 6);
-
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SiteHeader />
@@ -130,7 +141,7 @@ function VitrinePage() {
               to="/app/planning"
               className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground btn-press hover:bg-primary/90"
             >
-              Voir les séances
+              Réserver une séance
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
             <a
@@ -143,7 +154,7 @@ function VitrinePage() {
 
           <div className="mt-9 flex items-center gap-3 text-xs text-foreground/70">
             <span className="h-px w-8 bg-primary/70" />
-            Une proposition de site à personnaliser avec l'équipe CACT
+            Cours collectifs · Coaching individuel · Préparation HYROX
           </div>
         </div>
       </section>
@@ -158,9 +169,9 @@ function VitrinePage() {
               Notre énergie.
             </h2>
             <p className="mt-6 text-lg leading-relaxed text-foreground/80">
-              Ici, il n'est pas nécessaire d'être déjà sportif pour commencer. Chaque séance est
-              expliquée, encadrée et adaptée. Vous venez avec votre niveau, vos objectifs et votre
-              énergie du jour. Le groupe fait le reste.
+              Ici, nul besoin d'être déjà sportif pour commencer. Chaque séance est expliquée,
+              encadrée et adaptée. Vous venez avec votre niveau, vos objectifs et votre énergie du
+              jour. Le groupe vous aide à aller plus loin.
             </p>
           </div>
 
@@ -228,15 +239,14 @@ function VitrinePage() {
               prochain HYROX.
             </h2>
             <p className="mt-5 text-base leading-relaxed text-foreground/85 sm:text-lg">
-              En tant que club affilié HYROX, CACT propose des séances qui combinent course,
-              endurance, force et maîtrise des mouvements spécifiques. Le contenu exact et les
-              créneaux seront définis avec Sandra et Armel.
+              CACT combine course, endurance, force et maîtrise des mouvements spécifiques pour vous
+              permettre de découvrir le format ou de préparer votre prochaine compétition.
             </p>
             <Link
               to="/app/planning"
               className="mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground btn-press hover:bg-primary/90"
             >
-              Voir le planning <ArrowRight size={16} />
+              Voir les séances HYROX <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -253,8 +263,7 @@ function VitrinePage() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-foreground/75">
               L'énergie du collectif aide à rester régulier, sans comparaison ni pression inutile.
-              C'est ce lien entre accompagnement et communauté que le futur site devra faire
-              ressentir.
+              Chacun avance à son rythme, soutenu par les coachs et le groupe.
             </p>
           </div>
 
@@ -276,9 +285,6 @@ function VitrinePage() {
               />
             </div>
           </div>
-          <p className="mt-4 text-xs text-muted-foreground">
-            Visuels d'ambiance temporaires, à remplacer par les photos de CACT.
-          </p>
         </div>
       </section>
 
@@ -287,35 +293,25 @@ function VitrinePage() {
           <p className="text-xs uppercase tracking-[0.25em] text-primary">L'accompagnement</p>
           <h2 className="mt-3 text-display text-[clamp(2.4rem,9vw,5rem)]">Sandra & Armel</h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-foreground/80">
-            Deux coachs présents pour expliquer, ajuster et encourager. Cette section accueillera
-            leur véritable parcours, leurs spécialités et leurs photos après l'échange avec Sandra.
+            Deux coachs présents pour expliquer, ajuster et encourager. Leur priorité : vous faire
+            progresser dans un cadre exigeant, accessible et bienveillant.
           </p>
 
           <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2">
-            {[
-              {
-                name: "Sandra",
-                line: "Coach · Présentation à compléter ensemble",
-                tone: "from-primary/30 to-cact-deep/60",
-              },
-              {
-                name: "Armel",
-                line: "Coach · Présentation à compléter ensemble",
-                tone: "from-cact-deep/60 to-primary/30",
-              },
-            ].map((coach) => (
+            {COACHES.map((coach) => (
               <article
                 key={coach.name}
-                className="relative aspect-[4/3] overflow-hidden rounded-3xl border border-border bg-card sm:aspect-[4/5]"
+                className={`relative flex min-h-80 flex-col justify-between overflow-hidden rounded-3xl border border-border bg-gradient-to-br ${coach.tone} p-7 sm:min-h-96`}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${coach.tone} opacity-80`} />
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.15),transparent_60%)]" />
-                <div className="absolute inset-0 flex flex-col justify-end p-6">
-                  <span className="text-xs uppercase tracking-wider text-foreground/60">
-                    Photo à intégrer
-                  </span>
-                  <h3 className="mt-1 text-display text-5xl">{coach.name}</h3>
-                  <p className="mt-1 text-sm text-foreground/85">{coach.line}</p>
+                <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/20 bg-black/15 text-display text-3xl backdrop-blur-sm">
+                  {coach.initials}
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-primary">Coach</p>
+                  <h3 className="mt-2 text-display text-5xl">{coach.name}</h3>
+                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-foreground/80">
+                    {coach.text}
+                  </p>
                 </div>
               </article>
             ))}
@@ -324,138 +320,29 @@ function VitrinePage() {
       </section>
 
       <section id="formules" className="px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-6xl">
-          <p className="text-xs uppercase tracking-[0.25em] text-primary">Formules</p>
-          <h2 className="mt-3 text-display text-[clamp(2.2rem,8vw,4.25rem)]">
-            Une formule adaptée
-            <br />à votre rythme.
-          </h2>
-          <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground">
-            Les intitulés et tarifs définitifs seront renseignés avec Sandra et Armel. Cette
-            présentation montre comment les visiteurs pourront comparer puis choisir leur formule.
-          </p>
-
-          <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {MEMBERSHIP_PLANS.map((plan) => (
-              <article
-                key={plan.id}
-                className={`relative flex flex-col rounded-3xl border p-6 ${
-                  plan.popular
-                    ? "border-primary/60 bg-gradient-to-b from-primary/10 to-transparent ring-cact"
-                    : "border-border bg-card"
-                }`}
-              >
-                {plan.popular && (
-                  <span className="absolute -top-3 left-6 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground">
-                    Exemple mis en avant
-                  </span>
-                )}
-                <h3 className="text-display text-2xl">{plan.name}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                  {plan.description}
-                </p>
-                <div className="mt-5 text-xs uppercase tracking-wider text-primary">
-                  {plan.detail}
-                </div>
-                <div className="mt-1 text-lg font-semibold">{plan.price}</div>
-                <Link
-                  to="/app/formules"
-                  className={`mt-6 inline-flex h-11 items-center justify-center rounded-full text-sm font-semibold btn-press ${
-                    plan.popular
-                      ? "bg-primary text-primary-foreground hover:bg-primary/90"
-                      : "border border-border hover:border-primary/50"
-                  }`}
-                >
-                  Voir cette formule
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="planning" className="bg-surface px-5 py-24 sm:px-8 sm:py-32">
-        <div className="mx-auto max-w-6xl">
-          <div className="flex items-end justify-between gap-4">
-            <div>
-              <p className="text-xs uppercase tracking-[0.25em] text-primary">
-                Planning de démonstration
-              </p>
-              <h2 className="mt-3 text-display text-[clamp(2.2rem,8vw,4.25rem)]">
-                Trouvez votre
-                <br />
-                prochain créneau.
-              </h2>
-            </div>
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-primary/25 bg-[radial-gradient(circle_at_top_right,_rgba(104,196,119,0.20),_transparent_48%),linear-gradient(135deg,#121512,#080A09)] p-8 sm:p-14">
+          <div className="max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.25em] text-primary">
+              Choisissez votre rythme
+            </p>
+            <h2 className="mt-4 text-display text-[clamp(2.4rem,8vw,4.75rem)]">
+              Une formule pour chaque objectif.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-foreground/75">
+              Séance à l'unité, carte, abonnement ou coaching individuel : retrouvez toutes les
+              options dans un espace dédié.
+            </p>
             <Link
-              to="/app/planning"
-              className="hidden h-11 items-center gap-2 rounded-full border border-border px-4 text-sm hover:border-primary/50 sm:inline-flex"
+              to="/app/formules"
+              className="mt-8 inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground btn-press hover:bg-primary/90"
             >
-              Planning complet <ArrowRight size={16} />
+              <Dumbbell size={18} /> Voir les formules
             </Link>
           </div>
-
-          <div className="mt-8 overflow-hidden rounded-3xl border border-border">
-            {publicSessions.map((session) => {
-              const full = session.booked >= session.capacity;
-              const remaining = session.capacity - session.booked;
-              return (
-                <div
-                  key={session.id}
-                  className="flex items-center gap-4 border-b border-border/70 bg-card p-4 last:border-0 sm:p-5"
-                >
-                  <div className="flex w-14 shrink-0 flex-col items-center rounded-xl bg-surface-2 py-2 text-center">
-                    <span className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                      {session.day}
-                    </span>
-                    <span className="text-display text-xl leading-none">{session.time}</span>
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="truncate text-sm font-semibold sm:text-base">
-                        {session.type}
-                      </span>
-                      {session.hyrox && (
-                        <span className="rounded-full bg-primary/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-primary">
-                          HYROX
-                        </span>
-                      )}
-                    </div>
-                    <div className="mt-0.5 text-xs text-muted-foreground">
-                      {session.date} · Coach {session.coach}
-                    </div>
-                    <div className="mt-2 h-1 w-full overflow-hidden rounded-full bg-surface-2">
-                      <div
-                        className={`h-full ${full ? "bg-destructive" : remaining <= 2 ? "bg-amber-400" : "bg-primary"}`}
-                        style={{ width: `${(session.booked / session.capacity) * 100}%` }}
-                      />
-                    </div>
-                  </div>
-                  <div className="shrink-0 text-right">
-                    <div
-                      className={`text-xs font-semibold ${full ? "text-destructive" : "text-primary"}`}
-                    >
-                      {full ? "Complet" : `${remaining} place${remaining > 1 ? "s" : ""}`}
-                    </div>
-                    <div className="mt-0.5 text-[11px] text-muted-foreground">
-                      {session.booked}/{session.capacity} inscrits
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <Link
-            to="/app/planning"
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm hover:border-primary/50 sm:hidden"
-          >
-            Ouvrir le planning <ArrowRight size={16} />
-          </Link>
         </div>
       </section>
 
-      <section id="lieu" className="px-5 py-24 sm:px-8 sm:py-32">
+      <section id="lieu" className="bg-surface px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-6xl">
           <p className="text-xs uppercase tracking-[0.25em] text-primary">La salle</p>
           <h2 className="mt-3 text-display text-[clamp(2.2rem,8vw,4.25rem)]">
@@ -478,7 +365,7 @@ function VitrinePage() {
               <div className="flex items-start gap-3">
                 <MapPin className="mt-0.5 text-primary" size={18} />
                 <div>
-                  <div className="font-semibold">Secteur Manganao / Belle-Allée</div>
+                  <div className="font-semibold">Manganao · Belle-Allée</div>
                   <div className="text-sm text-muted-foreground">
                     97118 Saint-François, Guadeloupe
                   </div>
@@ -488,12 +375,9 @@ function VitrinePage() {
               <div className="flex items-start gap-3">
                 <Clock className="mt-0.5 text-primary" size={18} />
                 <div>
-                  <div className="font-semibold">Créneaux</div>
+                  <div className="font-semibold">Du lundi au samedi</div>
                   <div className="text-sm text-muted-foreground">
                     Séances le matin et en fin de journée
-                  </div>
-                  <div className="mt-1 text-xs text-muted-foreground/80">
-                    Les horaires exacts seront synchronisés avec le planning administrateur.
                   </div>
                 </div>
               </div>
@@ -503,48 +387,43 @@ function VitrinePage() {
                 rel="noreferrer"
                 className="mt-2 inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border text-sm hover:border-primary/50"
               >
-                <MapPin size={16} /> Voir le secteur sur la carte
+                <MapPin size={16} /> Ouvrir l'itinéraire
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-surface px-5 py-24 sm:px-8 sm:py-32">
+      <section className="px-5 py-24 sm:px-8 sm:py-32">
         <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-border bg-[radial-gradient(ellipse_at_top_left,_rgba(104,196,119,0.24),_transparent_60%),linear-gradient(180deg,#121512,#080A09)] p-9 sm:p-16">
           <p className="text-xs uppercase tracking-[0.25em] text-primary">
-            Prêt à découvrir CACT ?
+            Prêt à rejoindre le mouvement ?
           </p>
           <h2 className="mt-4 text-display text-[clamp(2.4rem,9vw,5rem)]">
-            Commencez par
+            Votre prochaine séance
             <br />
-            une première séance.
+            commence ici.
           </h2>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-foreground/80">
-            Consultez les créneaux, créez votre compte et réservez depuis votre téléphone. La séance
-            découverte et ses conditions seront confirmées avec l'équipe.
+            Créez votre espace membre, choisissez votre créneau et réservez votre place en quelques
+            secondes.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
-              to="/app/connexion"
+              to="/app/planning"
               className="inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-7 text-base font-semibold text-primary-foreground"
             >
-              <Calendar size={18} /> Essayer l'espace membre
+              <Calendar size={18} /> Réserver une séance
             </Link>
             <Link
-              to="/app/formules"
+              to="/app/connexion"
               className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-border px-7 text-base font-medium hover:border-primary/50"
             >
-              <Dumbbell size={18} /> Explorer les formules
+              Accéder à mon espace
             </Link>
           </div>
           <ul className="mt-8 flex flex-wrap gap-4 text-xs text-muted-foreground">
-            {[
-              "Tous niveaux",
-              "12 places par créneau",
-              "Compte membre simple",
-              "Réservation mobile",
-            ].map((item) => (
+            {["Tous niveaux", "12 places par créneau", "Réservation mobile"].map((item) => (
               <li key={item} className="inline-flex items-center gap-1.5">
                 <CheckCircle2 size={14} className="text-primary" /> {item}
               </li>
@@ -582,25 +461,17 @@ function VitrinePage() {
                 </a>
               </li>
               <li>
-                <a href="#planning" className="hover:text-primary">
-                  Le planning
-                </a>
-              </li>
-              <li>
-                <Link to="/admin" className="hover:text-primary">
-                  Voir l'administration
+                <Link to="/app/planning" className="hover:text-primary">
+                  Réserver une séance
                 </Link>
               </li>
             </ul>
           </div>
           <div>
             <div className="text-xs uppercase tracking-[0.25em] text-muted-foreground">Contact</div>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-4 space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <MapPin size={14} className="text-primary" /> Saint-François, Guadeloupe
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail size={14} className="text-primary" /> Coordonnées à compléter
               </li>
               <li>
                 <a
@@ -617,7 +488,7 @@ function VitrinePage() {
         </div>
         <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-3 border-t border-border/60 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} CACT Health Community</span>
-          <span>Prototype de démonstration · contenus et tarifs à valider</span>
+          <span>Manganao · Saint-François · Guadeloupe</span>
         </div>
       </footer>
     </main>

@@ -60,16 +60,14 @@ function AdminPlanningPage() {
 
   const remove = (id: string) => {
     setSessions((current) => current.filter((session) => session.id !== id));
-    setMessage("Le créneau a été supprimé de la démonstration.");
+    setMessage("Le créneau a été supprimé.");
   };
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-[0.18em] text-primary">
-            Semaine de démonstration
-          </p>
+          <p className="text-xs uppercase tracking-[0.18em] text-primary">Semaine en cours</p>
           <h1 className="mt-1 text-display text-3xl">Planning</h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Créez, modifiez ou supprimez un créneau.

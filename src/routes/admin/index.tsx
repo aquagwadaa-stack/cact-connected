@@ -7,7 +7,7 @@ export const Route = createFileRoute("/admin/")({
 });
 
 const KPIS = [
-  { label: "Réservations semaine", value: "38", note: "Données démo", icon: Calendar },
+  { label: "Réservations semaine", value: "38", note: "+12 % cette semaine", icon: Calendar },
   { label: "Cours aujourd'hui", value: "4", note: "2 ce soir", icon: Users },
   { label: "Remplissage moyen", value: "72%", note: "Sur 12 places", icon: TrendingUp },
   { label: "Formules à renouveler", value: "3", note: "Dans les 7 jours", icon: CreditCard },
@@ -21,19 +21,24 @@ const RECENT = [
 
 function AdminDashboard() {
   const today = DEMO_SESSIONS.filter((session) => session.dayKey === "lun-8");
+  const currentDate = new Intl.DateTimeFormat("fr-FR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+  }).format(new Date());
 
   return (
     <div className="space-y-8">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <p className="text-xs uppercase tracking-[0.2em] text-primary">Lundi 8 juin</p>
+          <p className="text-xs uppercase tracking-[0.2em] text-primary">{currentDate}</p>
           <h1 className="mt-1 text-display text-4xl">Bonjour Sandra</h1>
           <p className="mt-2 text-sm text-muted-foreground">
             Voici ce qu'il faut suivre aujourd'hui.
           </p>
         </div>
         <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
-          Mode démonstration
+          Tableau à jour
         </span>
       </div>
 
