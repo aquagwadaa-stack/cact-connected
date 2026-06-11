@@ -154,7 +154,7 @@ function VitrinePage() {
 
           <div className="mt-9 flex items-center gap-3 text-xs text-foreground/70">
             <span className="h-px w-8 bg-primary/70" />
-            Cours collectifs · Coaching individuel · Préparation HYROX
+            
           </div>
         </div>
       </section>
