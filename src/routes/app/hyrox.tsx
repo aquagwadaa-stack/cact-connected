@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Calendar, Dumbbell, Gauge, Trophy } from "lucide-react";
 import { MobileTabBar } from "@/components/cact/MobileTabBar";
-import hyroxImg from "@/assets/hyrox.jpg";
+import hyroxImg from "@/assets/cact/cact-lifting-wide.jpg.asset.json";
 
 export const Route = createFileRoute("/app/hyrox")({
   head: () => ({ meta: [{ title: "Préparation HYROX | CACT" }] }),
@@ -39,7 +39,7 @@ function HyroxPage() {
 
       <section className="relative h-64 overflow-hidden">
         <img
-          src={hyroxImg}
+          src={hyroxImg.url}
           alt="Entraînement fonctionnel"
           className="absolute inset-0 h-full w-full object-cover"
         />
