@@ -9,6 +9,9 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SeancesRouteImport } from './routes/seances'
+import { Route as FormulesRouteImport } from './routes/formules'
+import { Route as EspritCactRouteImport } from './routes/esprit-cact'
 import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppIndexRouteImport } from './routes/app/index'
@@ -24,6 +27,21 @@ import { Route as AdminMembresRouteImport } from './routes/admin/membres'
 import { Route as AdminFormulesRouteImport } from './routes/admin/formules'
 import { Route as AdminContenuRouteImport } from './routes/admin/contenu'
 
+const SeancesRoute = SeancesRouteImport.update({
+  id: '/seances',
+  path: '/seances',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormulesRoute = FormulesRouteImport.update({
+  id: '/formules',
+  path: '/formules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EspritCactRoute = EspritCactRouteImport.update({
+  id: '/esprit-cact',
+  path: '/esprit-cact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminRouteRoute = AdminRouteRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -98,6 +116,9 @@ const AdminContenuRoute = AdminContenuRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
+  '/esprit-cact': typeof EspritCactRoute
+  '/formules': typeof FormulesRoute
+  '/seances': typeof SeancesRoute
   '/admin/contenu': typeof AdminContenuRoute
   '/admin/formules': typeof AdminFormulesRoute
   '/admin/membres': typeof AdminMembresRoute
@@ -113,6 +134,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/esprit-cact': typeof EspritCactRoute
+  '/formules': typeof FormulesRoute
+  '/seances': typeof SeancesRoute
   '/admin/contenu': typeof AdminContenuRoute
   '/admin/formules': typeof AdminFormulesRoute
   '/admin/membres': typeof AdminMembresRoute
@@ -130,6 +154,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/admin': typeof AdminRouteRouteWithChildren
+  '/esprit-cact': typeof EspritCactRoute
+  '/formules': typeof FormulesRoute
+  '/seances': typeof SeancesRoute
   '/admin/contenu': typeof AdminContenuRoute
   '/admin/formules': typeof AdminFormulesRoute
   '/admin/membres': typeof AdminMembresRoute
@@ -148,6 +175,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/admin'
+    | '/esprit-cact'
+    | '/formules'
+    | '/seances'
     | '/admin/contenu'
     | '/admin/formules'
     | '/admin/membres'
@@ -163,6 +193,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/esprit-cact'
+    | '/formules'
+    | '/seances'
     | '/admin/contenu'
     | '/admin/formules'
     | '/admin/membres'
@@ -179,6 +212,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/admin'
+    | '/esprit-cact'
+    | '/formules'
+    | '/seances'
     | '/admin/contenu'
     | '/admin/formules'
     | '/admin/membres'
@@ -196,6 +232,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
+  EspritCactRoute: typeof EspritCactRoute
+  FormulesRoute: typeof FormulesRoute
+  SeancesRoute: typeof SeancesRoute
   AppConnexionRoute: typeof AppConnexionRoute
   AppFormulesRoute: typeof AppFormulesRoute
   AppHyroxRoute: typeof AppHyroxRoute
@@ -207,6 +246,27 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/seances': {
+      id: '/seances'
+      path: '/seances'
+      fullPath: '/seances'
+      preLoaderRoute: typeof SeancesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/formules': {
+      id: '/formules'
+      path: '/formules'
+      fullPath: '/formules'
+      preLoaderRoute: typeof FormulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/esprit-cact': {
+      id: '/esprit-cact'
+      path: '/esprit-cact'
+      fullPath: '/esprit-cact'
+      preLoaderRoute: typeof EspritCactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin': {
       id: '/admin'
       path: '/admin'
@@ -331,6 +391,9 @@ const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRouteRoute: AdminRouteRouteWithChildren,
+  EspritCactRoute: EspritCactRoute,
+  FormulesRoute: FormulesRoute,
+  SeancesRoute: SeancesRoute,
   AppConnexionRoute: AppConnexionRoute,
   AppFormulesRoute: AppFormulesRoute,
   AppHyroxRoute: AppHyroxRoute,
@@ -342,3 +405,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
