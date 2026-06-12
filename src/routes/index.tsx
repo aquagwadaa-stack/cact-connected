@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Dumbbell, MapPin, Sparkles, Trophy, Users } from "lucide-react";
 import communityImg from "@/assets/cact/cact-rowers.jpg.asset.json";
-import deadliftImg from "@/assets/cact/cact-deadlift.jpg.asset.json";
 import spartan from "@/assets/cact/spartan.png.asset.json";
 import { PublicFooter } from "@/components/cact/PublicFooter";
 import { SiteHeader } from "@/components/cact/SiteHeader";
@@ -190,9 +189,6 @@ function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* hidden image to keep deadlift asset referenced for other sections */}
-      <link rel="prefetch" href={deadliftImg.url} />
 
       <PublicFooter />
     </main>
