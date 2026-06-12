@@ -39,7 +39,7 @@ function HyroxPage() {
 
       <section className="relative h-64 overflow-hidden">
         <img
-          src={hyroxImg}
+          src={hyroxImg.url}
           alt="Entraînement fonctionnel"
           className="absolute inset-0 h-full w-full object-cover"
         />
