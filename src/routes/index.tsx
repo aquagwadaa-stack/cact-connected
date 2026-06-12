@@ -105,17 +105,40 @@ function VitrinePage() {
 
       <section className="relative min-h-[100svh] w-full overflow-hidden">
         <img
-          src={heroImg}
-          alt="Ambiance d'un entraînement fonctionnel en salle ouverte"
+          src={heroImg.url}
+          alt="Cours collectif CACT en bord de mer à Saint-François"
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
         />
         <div className="absolute inset-0 gradient-hero" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(36,91,52,0.22),_transparent_58%)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background/85" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(36,91,52,0.28),_transparent_58%)]" />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-12 pt-28 sm:px-8 sm:pb-16">
+        {/* Big identity wordmark at top, centered */}
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center px-5 pt-24 text-center sm:pt-28">
+          <p className="reveal text-[0.7rem] font-semibold uppercase tracking-[0.55em] text-primary sm:text-xs">
+            CrossFit
+          </p>
+          <div className="reveal reveal-2 mt-4 flex items-center justify-center gap-3 sm:gap-4">
+            <img
+              src={logoAsset.url}
+              alt=""
+              width={120}
+              height={72}
+              className="h-12 w-auto sm:h-16"
+            />
+            <span className="text-display text-[clamp(2.75rem,12vw,6rem)] leading-[0.85] text-foreground">
+              CACT
+            </span>
+          </div>
+          <p className="reveal reveal-3 mt-3 text-[0.78rem] uppercase tracking-[0.35em] text-foreground/80 sm:text-sm">
+            Health Community
+          </p>
+        </div>
+
+        <div className="relative z-10 mx-auto flex min-h-[calc(100svh-220px)] max-w-6xl flex-col justify-end px-5 pb-12 sm:px-8 sm:pb-16">
           <div className="reveal flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/20 px-3 py-1.5 text-xs text-foreground/90 backdrop-blur-md">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/30 px-3 py-1.5 text-xs text-foreground/90 backdrop-blur-md">
               <MapPin size={12} className="text-primary" />
               Saint-François · Guadeloupe
             </span>
@@ -124,7 +147,7 @@ function VitrinePage() {
             </span>
           </div>
 
-          <h1 className="reveal reveal-2 mt-5 text-display text-[clamp(3rem,13vw,7.25rem)] text-foreground">
+          <h1 className="reveal reveal-2 mt-5 text-display text-[clamp(2.5rem,11vw,6rem)] leading-[0.92] text-foreground">
             Bougez.
             <br />
             <span className="text-primary">Progressez.</span>
@@ -133,8 +156,8 @@ function VitrinePage() {
           </h1>
 
           <p className="reveal reveal-3 mt-5 max-w-lg text-base leading-relaxed text-foreground/85 sm:text-lg">
-            Des cours collectifs et un accompagnement personnalisé pour avancer à votre rythme, dans
-            une salle ouverte et conviviale à Saint-François.
+            Des cours collectifs et un accompagnement personnalisé pour avancer à votre rythme, face
+            à la mer, dans une salle ouverte et conviviale.
           </p>
 
           <div className="reveal reveal-4 mt-7 flex flex-col gap-3 sm:flex-row">
@@ -151,11 +174,6 @@ function VitrinePage() {
             >
               Découvrir CACT
             </a>
-          </div>
-
-          <div className="mt-9 flex items-center gap-3 text-xs text-foreground/70">
-            <span className="h-px w-8 bg-primary/70" />
-            
           </div>
         </div>
       </section>
