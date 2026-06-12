@@ -38,8 +38,16 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
-          <Link to="/" className="flex items-center gap-2" aria-label="CACT — Accueil">
-            <CactLogo className="h-8 w-auto" />
+          <Link
+            to="/"
+            aria-label="CACT — Accueil"
+            className={`flex items-center transition-all duration-500 ${
+              scrolled || open
+                ? "translate-y-0 opacity-100"
+                : "pointer-events-none -translate-y-2 opacity-0"
+            }`}
+          >
+            <CactLogo className="h-10" />
           </Link>
 
           <nav className="hidden items-center gap-7 text-sm text-foreground/75 lg:flex">

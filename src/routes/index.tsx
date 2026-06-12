@@ -1,21 +1,25 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, Dumbbell, MapPin, Sparkles, Trophy, Users } from "lucide-react";
-import heroImg from "@/assets/hero-gym.jpg";
-import communityImg from "@/assets/community.jpg";
+import communityImg from "@/assets/cact/cact-rowers.jpg.asset.json";
+import deadliftImg from "@/assets/cact/cact-deadlift.jpg.asset.json";
+import spartan from "@/assets/cact/spartan.png.asset.json";
 import { PublicFooter } from "@/components/cact/PublicFooter";
 import { SiteHeader } from "@/components/cact/SiteHeader";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "CACT Health Community | Saint-François, Guadeloupe" },
+      { title: "CrossFit CACT Health Community | Saint-François, Guadeloupe" },
       {
         name: "description",
         content:
-          "Cours collectifs, coaching individuel et préparation HYROX à Saint-François en Guadeloupe.",
+          "Box CrossFit affiliée HYROX à Saint-François, Guadeloupe. Cours collectifs, coaching et préparation HYROX dans une communauté soudée.",
       },
-      { property: "og:title", content: "CACT Health Community | Bougez. Progressez. Ensemble." },
-      { property: "og:image", content: heroImg },
+      {
+        property: "og:title",
+        content: "CrossFit CACT Health Community | Bougez. Progressez. Ensemble.",
+      },
+      { property: "og:image", content: communityImg.url },
       { property: "og:type", content: "website" },
       { name: "theme-color", content: "#68C477" },
     ],
@@ -52,19 +56,12 @@ function HomePage() {
     <main className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="relative flex min-h-[88svh] items-end overflow-hidden">
-        <img
-          src={heroImg}
-          alt="Entraînement collectif chez CACT Health Community"
-          className="absolute inset-0 h-full w-full object-cover"
-          fetchPriority="high"
-        />
-        <div className="absolute inset-0 gradient-hero" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(36,91,52,0.2),_transparent_58%)]" />
+      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-[radial-gradient(ellipse_at_top,_rgba(104,196,119,0.18),_transparent_55%),linear-gradient(180deg,#0a0d0a,#070908)] px-5 pt-24 sm:px-8">
+        <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:48px_48px]" />
 
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-12 pt-28 sm:px-8 sm:pb-16">
-          <div className="reveal flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/20 px-3 py-1.5 text-xs backdrop-blur-md">
+        <div className="relative z-10 flex w-full max-w-5xl flex-col items-center">
+          <div className="reveal flex flex-wrap items-center justify-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-black/30 px-3 py-1.5 text-xs backdrop-blur-md">
               <MapPin size={12} className="text-primary" />
               Saint-François · Guadeloupe
             </span>
@@ -73,26 +70,34 @@ function HomePage() {
             </span>
           </div>
 
-          <h1 className="reveal reveal-2 mt-5 max-w-5xl text-display text-[clamp(3.2rem,13vw,7.5rem)] leading-[0.86]">
-            Bougez.
-            <br />
-            <span className="text-primary">Progressez.</span>
-            <br />
-            Ensemble.
-          </h1>
-
-          <div className="mt-6 flex max-w-3xl flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
-            <p className="reveal reveal-3 max-w-lg text-base leading-relaxed text-foreground/85 sm:text-lg">
-              Des séances accessibles, un coaching attentif et l'énergie d'un groupe pour avancer à
-              votre rythme.
-            </p>
-            <Link
-              to="/app/planning"
-              className="reveal reveal-4 inline-flex h-14 shrink-0 items-center justify-center gap-2 rounded-full bg-primary px-7 font-semibold text-primary-foreground hover:bg-primary/90"
-            >
-              <Calendar size={18} /> Réserver une séance
-            </Link>
+          <div className="reveal reveal-2 mt-10 flex flex-col items-center text-center">
+            <span className="text-sm font-bold uppercase tracking-[0.45em] text-primary sm:text-base">
+              CrossFit
+            </span>
+            <img
+              src={spartan.url}
+              alt="CACT Health Community"
+              className="my-5 h-32 w-auto drop-shadow-[0_0_40px_rgba(104,196,119,0.4)] sm:h-44"
+            />
+            <h1 className="text-display text-[clamp(4rem,16vw,9rem)] leading-[0.82]">
+              CACT
+            </h1>
+            <span className="mt-3 text-sm font-medium uppercase tracking-[0.4em] text-foreground/75 sm:text-base">
+              Health Community
+            </span>
           </div>
+
+          <p className="reveal reveal-3 mt-12 max-w-xl text-center text-base leading-relaxed text-foreground/80 sm:text-lg">
+            Des séances accessibles, un coaching attentif et l'énergie d'un groupe pour avancer
+            ensemble à votre rythme.
+          </p>
+
+          <Link
+            to="/app/planning"
+            className="reveal reveal-4 mt-7 inline-flex h-14 items-center justify-center gap-2 rounded-full bg-primary px-8 font-semibold text-primary-foreground hover:bg-primary/90"
+          >
+            <Calendar size={18} /> Réserver une séance
+          </Link>
         </div>
       </section>
 
@@ -136,7 +141,7 @@ function HomePage() {
         <div className="mx-auto grid max-w-6xl items-center gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="overflow-hidden rounded-[2rem]">
             <img
-              src={communityImg}
+              src={communityImg.url}
               alt="La communauté CACT après une séance"
               className="aspect-[4/3] h-full w-full object-cover"
               loading="lazy"
@@ -185,6 +190,9 @@ function HomePage() {
           </Link>
         </div>
       </section>
+
+      {/* hidden image to keep deadlift asset referenced for other sections */}
+      <link rel="prefetch" href={deadliftImg.url} />
 
       <PublicFooter />
     </main>
