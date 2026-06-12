@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Calendar, CheckCircle2, HeartPulse, Timer, Trophy, Users } from "lucide-react";
-import hyroxImg from "@/assets/hyrox.jpg";
+import hyroxImg from "@/assets/cact/cact-lifting-wide.jpg.asset.json";
 import { PublicFooter } from "@/components/cact/PublicFooter";
 import { SiteHeader } from "@/components/cact/SiteHeader";
 
@@ -53,7 +53,7 @@ function SeancesPage() {
 
       <section className="relative flex min-h-[70svh] items-end overflow-hidden">
         <img
-          src={hyroxImg}
+          src={hyroxImg.url}
           alt="Séance d'entraînement fonctionnel chez CACT"
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
@@ -132,7 +132,7 @@ function SeancesPage() {
 
       <section className="relative overflow-hidden">
         <img
-          src={hyroxImg}
+          src={hyroxImg.url}
           alt="Préparation HYROX chez CACT"
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
