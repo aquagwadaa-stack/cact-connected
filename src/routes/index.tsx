@@ -13,10 +13,11 @@ import {
   Trophy,
   Users,
 } from "lucide-react";
-import heroImg from "@/assets/hero-gym.jpg";
-import hyroxImg from "@/assets/hyrox.jpg";
-import communityImg from "@/assets/community.jpg";
-import community3 from "@/assets/community-3.jpg";
+import heroImg from "@/assets/cact/cact-group.jpg.asset.json";
+import hyroxImg from "@/assets/cact/cact-lifting-wide.jpg.asset.json";
+import communityImg from "@/assets/cact/cact-rowers.jpg.asset.json";
+import community3 from "@/assets/cact/cact-deadlift.jpg.asset.json";
+import logoAsset from "@/assets/cact-logo.png.asset.json";
 import { SiteHeader } from "@/components/cact/SiteHeader";
 import { CactLogo } from "@/components/cact/Logo";
 
