@@ -58,7 +58,7 @@ function EspritCactPage() {
 
       <section className="relative flex min-h-[68svh] items-end overflow-hidden">
         <img
-          src={communityImg}
+          src={communityImg.url}
           alt="La communauté CACT"
           className="absolute inset-0 h-full w-full object-cover"
           fetchPriority="high"
@@ -124,7 +124,7 @@ function EspritCactPage() {
           <div className="mt-10 grid grid-cols-12 gap-3 sm:gap-4">
             <div className="col-span-12 overflow-hidden rounded-3xl sm:col-span-7">
               <img
-                src={community2Img}
+                src={community2Img.url}
                 alt="Entraînement collectif chez CACT"
                 className="aspect-[4/3] h-full w-full object-cover"
                 loading="lazy"
@@ -132,7 +132,7 @@ function EspritCactPage() {
             </div>
             <div className="col-span-12 overflow-hidden rounded-3xl sm:col-span-5">
               <img
-                src={community3Img}
+                src={community3Img.url}
                 alt="Accompagnement pendant une séance CACT"
                 className="aspect-[4/3] h-full w-full object-cover sm:aspect-auto"
                 loading="lazy"
