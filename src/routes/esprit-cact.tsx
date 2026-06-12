@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Clock, MapPin, ShieldCheck, Sparkles, Users } from "lucide-react";
-import communityImg from "@/assets/community.jpg";
-import community2Img from "@/assets/community-2.jpg";
-import community3Img from "@/assets/community-3.jpg";
+import communityImg from "@/assets/cact/cact-group.jpg.asset.json";
+import community2Img from "@/assets/cact/cact-rowers.jpg.asset.json";
+import community3Img from "@/assets/cact/cact-deadlift.jpg.asset.json";
 import { PublicFooter } from "@/components/cact/PublicFooter";
 import { SiteHeader } from "@/components/cact/SiteHeader";
 
