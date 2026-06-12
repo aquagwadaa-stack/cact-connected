@@ -36,7 +36,7 @@ export const Route = createFileRoute("/")({
         content:
           "Une salle à taille humaine, des séances adaptées et une vraie énergie de groupe à Saint-François.",
       },
-      { property: "og:image", content: heroImg },
+      { property: "og:image", content: heroImg.url },
       { property: "og:type", content: "website" },
       { name: "theme-color", content: "#68C477" },
     ],
