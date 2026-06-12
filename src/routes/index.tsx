@@ -241,7 +241,7 @@ function VitrinePage() {
 
       <section id="hyrox" className="relative overflow-hidden">
         <img
-          src={hyroxImg}
+          src={hyroxImg.url}
           alt="Entraînement fonctionnel avec une barre lestée"
           className="absolute inset-0 h-full w-full object-cover"
           loading="lazy"
@@ -289,7 +289,7 @@ function VitrinePage() {
           <div className="mt-10 grid grid-cols-12 gap-3 sm:gap-4">
             <div className="col-span-12 overflow-hidden rounded-3xl sm:col-span-8 sm:aspect-[16/10]">
               <img
-                src={communityImg}
+                src={communityImg.url}
                 alt="Ambiance collective après un entraînement"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
@@ -297,7 +297,7 @@ function VitrinePage() {
             </div>
             <div className="col-span-12 overflow-hidden rounded-3xl sm:col-span-4 sm:aspect-[4/5]">
               <img
-                src={community3}
+                src={community3.url}
                 alt="Coach accompagnant un groupe"
                 className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                 loading="lazy"
